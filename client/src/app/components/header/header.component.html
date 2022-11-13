@@ -1,0 +1,153 @@
+<div class="headerContainer">
+  <div class="logoContainer">
+    <img
+      src="../../../assets/superex_logo_02.png"
+      class="logo"
+      alt=""
+      srcset=""
+      (click)="onLogoClicked()"
+    />
+  </div>
+
+  <ng-container *ngIf="usersService.isNotLoggedIn == true">
+    <div class="loginContainer">
+      <div class="mobileLoginLogo" (click)="onLoginLogoClicked()">
+        <img
+          class="loginLogoSize"
+          src="../../../assets/260-2603183_app-icon-set-login-icon-comments-sign-in-icon-png.png"
+          alt="loginLogo"
+        />
+      </div>
+      <!-- login -->
+      <form class="loginForm">
+        <input
+          type="text"
+          placeholder="User name"
+          name="username"
+          [(ngModel)]="userLoginDetails.userName"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          [(ngModel)]="userLoginDetails.password"
+        />
+        <input
+          class="button-12"
+          type="submit"
+          (click)="login()"
+          value="Login"
+        />
+      </form>
+    </div>
+  </ng-container>
+  <div class="logOutContainer" *ngIf="usersService.isNotLoggedIn == false">
+    <!-- admin -->
+    <input
+      class="button-12"
+      type="button"
+      *ngIf="usersService.userIsAdmin == true"
+      value="Add a product"
+      (click)="openModalForAddProduct()"
+    />
+    <!-- logout -->
+    <div>
+      <input
+        class="button-12"
+        type="button"
+        (click)="signOut()"
+        value="SignOut"
+      />
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showModal" class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add product</h4>
+        <button
+          (click)="closeModal()"
+          type="button"
+          class="close"
+          data-dismiss="modal"
+        >
+          &times;
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form
+          [formGroup]="addProductDetailsForm"
+          class="formClass"
+          (submit)="addProduct()"
+        >
+          <input
+            name="name"
+            [formControl]="name"
+            type="text"
+            placeholder="Product Name"
+          />
+          <input
+            name="price"
+            [formControl]="price"
+            type="text"
+            placeholder="Price"
+          /><br />
+          <input
+            name="description"
+            [formControl]="description"
+            type="text"
+            placeholder="Description"
+          /><br />
+          <select
+            [formControl]="category"
+            name="category"
+            placeholder="Choose Caterogy"
+            class="categorySelect"
+          >
+            <option value="" selected disabled hidden>Choose category</option>
+            <option
+              *ngFor="let category of this.categoriesService.categories"
+              value="{{ category.category_name }}"
+              name="category"
+            >
+              {{ category.category_name }}
+            </option>
+          </select>
+          <input type="submit" value="add" class="btn btn-danger" />
+        </form>
+        <div style="text-align: center; margin-top: 100px">
+          <mat-card style="margin-top: 10px; width: 50%">
+            <mat-card-content>
+              <img
+                *ngIf="imageExists"
+                class="imageSize"
+                [src]="this.uploadedImageName"
+              />
+            </mat-card-content>
+            <mat-card-actions>
+              <button
+                class="uploadImage"
+                mat-button
+                color="warn"
+                (click)="onClick()"
+              >
+                Upload image
+              </button>
+            </mat-card-actions> </mat-card
+          ><input
+            type="file"
+            #fileUpload
+            id="fileUpload"
+            name="fileUpload"
+            multiple="multiple"
+            accept="image/*"
+            style="display: none"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
