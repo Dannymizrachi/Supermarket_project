@@ -8,18 +8,21 @@
 }
 .registerContainer > * {
   flex-shrink: 0;
-}
-
-.formContainer {
-  width: 50%;
-}
-.marketDescriptionContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   width: 50%;
 }
 
 .marketDescription {
   padding-left: 5%;
   padding-right: 5%;
+  margin-top: 5%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 input[disabled] {
   border: 1px solid #999999;
@@ -38,12 +41,12 @@ input {
 }
 
 .formClass {
-  display: inline-block;
   margin-top: 5%;
-}
-
-.registerHead {
-  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
 }
 
 @media only screen and (max-width: 800px) {
