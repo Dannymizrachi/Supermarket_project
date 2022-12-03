@@ -55,6 +55,8 @@ input {
   }
   .registerContainer > * {
     margin: 10px 0px;
+    justify-content: space-around;
+    height: 60%;
   }
   .formContainer {
     width: 100%;
@@ -62,7 +64,6 @@ input {
   .marketDescriptionContainer {
     width: 100%;
   }
-
   .formClass {
     width: 100%;
   }
