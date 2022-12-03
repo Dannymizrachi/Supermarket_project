@@ -13,13 +13,13 @@ const uploadsController = require('./controllers/uploads-controller');
 const errorHandler = require('./errors/error-handler');
 const server = express();
 
-server.use(fileUpload());
 const loginFilter = require('./middlewares/login-filter');
 const bodyParser = require('body-parser');
 
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 server.use(express.json());
+server.use(fileUpload());
 
 //validates an uploads file in the server
 if (!fs.existsSync('./uploads')) {
@@ -28,13 +28,10 @@ if (!fs.existsSync('./uploads')) {
 
 server.use(cors());
 server.use(errorHandler);
-
-//upload images handling - didn't know was best to put this since it is using the server express.
+server.use(loginFilter());
 
 server.use('/file', filesController);
 server.use('/uploads', uploadsController);
-server.use(loginFilter());
-
 server.use('/cartItem', cartItemsController);
 server.use('/shipping-details', ordersController);
 server.use('/products', productsController);
