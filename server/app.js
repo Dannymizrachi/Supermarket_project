@@ -2,13 +2,14 @@ const fs = require('fs');
 const cors = require('cors');
 const express = require('express');
 const fileUpload = require('express-fileupload');
-const uuid = require('uuid');
 const usersController = require('./controllers/users-controller');
 const cartItemsController = require('./controllers/cartItems-controller');
 const ordersController = require('./controllers/orders-controller');
 const productsController = require('./controllers/products-controller');
 const citiesController = require('./controllers/cities-controller');
 const categoriesController = require('./controllers/categories-controller');
+const filesController = require('./controllers/files-controller');
+const uploadsController = require('./controllers/uploads-controller');
 const errorHandler = require('./errors/error-handler');
 const server = express();
 
@@ -29,28 +30,9 @@ server.use(cors());
 server.use(errorHandler);
 
 //upload images handling - didn't know was best to put this since it is using the server express.
-server.post('/file', async (request, response) => {
-	try {
-		const file = request.files.file;
-		const extension = file.name.substr(file.name.lastIndexOf('.'));
-		let newUuidFileName = uuid.v4();
-		let newFileName = newUuidFileName + extension;
-		file.mv('./uploads/' + newFileName);
-		let successfulUploadResponse = { name: newFileName };
 
-		response.status(200).json(successfulUploadResponse);
-	} catch (err) {
-		response.status(500).send(err.message);
-	}
-});
-
-server.get('/uploads/:name', (request, response) => {
-	let fileName = request.params.name;
-	let fullQualifiedFileName = __dirname + '/uploads/' + fileName;
-
-	response.sendFile(fullQualifiedFileName);
-});
-
+server.use('/file', filesController);
+server.use('/uploads', uploadsController);
 server.use(loginFilter());
 
 server.use('/cartItem', cartItemsController);
