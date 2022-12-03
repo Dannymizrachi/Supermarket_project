@@ -58,6 +58,9 @@ input {
     justify-content: space-around;
     height: 60%;
   }
+  .registerContainer > .marketDescriptionContainer {
+    width: 100%;
+  }
   .formContainer {
     width: 100%;
   }
