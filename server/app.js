@@ -28,10 +28,10 @@ if (!fs.existsSync('./uploads')) {
 
 server.use(cors());
 server.use(errorHandler);
+server.use('/uploads', uploadsController);
+server.use('/file', filesController);
 server.use(loginFilter());
 
-server.use('/file', filesController);
-server.use('/uploads', uploadsController);
 server.use('/cartItem', cartItemsController);
 server.use('/shipping-details', ordersController);
 server.use('/products', productsController);

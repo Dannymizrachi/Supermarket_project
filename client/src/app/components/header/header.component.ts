@@ -79,6 +79,7 @@ export class HeaderComponent implements OnInit {
   }
   //login section
   public login() {
+    if (!this.isUserValid()) return false;
     let loginObservable = this.usersService.login(this.userLoginDetails);
     loginObservable.subscribe(
       (successfulLoginResponse) => {
@@ -101,6 +102,10 @@ export class HeaderComponent implements OnInit {
         console.log(errorObject.error.error);
       }
     );
+  }
+
+  public isUserValid() {
+    return this.userLoginDetails.userName && this.userLoginDetails.password;
   }
 
   //add product in admin mode
