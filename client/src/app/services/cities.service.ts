@@ -10,6 +10,6 @@ export class CitiesService {
   public cities: Cities[];
   constructor(private http: HttpClient) {}
   public getAllCities(): Observable<Cities[]> {
-    return this.http.get<Cities[]>('http://localhost:3000/cities');
+    return this.http.get<Cities[]>('http://localhost:80/cities');
   }
 }

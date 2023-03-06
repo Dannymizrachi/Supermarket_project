@@ -18,7 +18,7 @@ export class UserService {
     userLoginDetails: UserLoginDetails
   ): Observable<SuccessfulLoginServerResponse> {
     return this.http.post<SuccessfulLoginServerResponse>(
-      'http://localhost:3000/users/login',
+      'http://localhost:80/users/login',
       userLoginDetails
     );
   }
@@ -27,7 +27,7 @@ export class UserService {
     userRegistrationDetails: UserRegistrationDetails
   ): Observable<void> {
     return this.http.post<void>(
-      'http://localhost:3000/users/register',
+      'http://localhost:80/users/register',
       userRegistrationDetails
     );
   }

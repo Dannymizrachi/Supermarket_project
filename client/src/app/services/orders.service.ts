@@ -11,7 +11,7 @@ export class OrdersService {
 
   public insertShippingDetails(shippingDetails: OrderDetails) {
     return this.http.post<void>(
-      'http://localhost:3000/shipping-details',
+      'http://localhost:80/shipping-details',
       shippingDetails
     );
   }

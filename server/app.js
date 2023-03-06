@@ -39,4 +39,4 @@ server.use('/cities', citiesController);
 server.use('/users', usersController);
 server.use('/categories', categoriesController);
 
-server.listen(3000, () => console.log('Listening on http://localhost:3000'));
+server.listen(80, () => console.log('Listening on http://localhost:80'));

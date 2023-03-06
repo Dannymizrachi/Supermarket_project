@@ -20,17 +20,17 @@ export class CartService {
   }
 
   public getUsersCartItems(): Observable<Products[]> {
-    return this.http.get<Products[]>('http://localhost:3000/cartItem');
+    return this.http.get<Products[]>('http://localhost:80/cartItem');
   }
   public addToCart(currentProduct: Products) {
     return this.http.post<void>(
-      'http://localhost:3000/cartItem/addToCart',
+      'http://localhost:80/cartItem/addToCart',
       currentProduct
     );
   }
   public deleteItemFromCart(currentProduct: Products) {
     return this.http.post<void>(
-      'http://localhost:3000/cartItem/deleteItem',
+      'http://localhost:80/cartItem/deleteItem',
       currentProduct
     );
   }
