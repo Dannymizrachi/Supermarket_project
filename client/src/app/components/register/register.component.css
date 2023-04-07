@@ -49,9 +49,15 @@ input {
     overflow-y: scroll;
   }
   .registerContainer > * {
-    position: relative;
-    top: 100px;
     justify-content: space-evenly;
+  }
+  .marketDescriptionContainer {
+    position: relative;
+    top: 30%;
+  }
+  .formContainer {
+    position: relative;
+    top: 50%;
   }
 }
 
@@ -75,5 +81,27 @@ input {
   }
   input {
     width: 75%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .marketDescriptionContainer {
+    position: relative;
+    top: 30%;
+  }
+  .formContainer {
+    position: relative;
+    top: 50%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .marketDescriptionContainer {
+    position: relative;
+    top: 50%;
+  }
+  .formContainer {
+    position: relative;
+    top: 100%;
   }
 }
