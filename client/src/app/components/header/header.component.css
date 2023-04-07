@@ -50,7 +50,7 @@
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 45%;
+  width: 60%;
   height: 68%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
@@ -62,13 +62,13 @@
 .middleText {
   font-size: 20px;
 }
-.modal-body1 {
-  position: relative;
-  flex: 1 1 auto;
-  padding: 1rem;
-  right: 150px;
-}
 
+.modal-body > .formClass {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .imageSize {
   width: 150px;
   height: 100px;
@@ -87,6 +87,11 @@
 
 .uploadImage {
   outline: none;
+}
+.categorySelect {
+  margin: 10px;
+  height: 35px;
+  width: 150px;
 }
 
 @media only screen and (max-width: 800px) {
