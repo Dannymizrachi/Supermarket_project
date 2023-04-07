@@ -40,7 +40,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
     this.usersService.userIsAdmin = true;
     this.usersService.isUserLoggedIn();
     let observable = this.productService.getAllProducts();
