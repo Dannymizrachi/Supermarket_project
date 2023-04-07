@@ -46,9 +46,11 @@ input {
   .registerContainer {
     grid-template-columns: repeat(1, 1fr);
     grid-template-areas: "b" "a";
-    overflow: scroll;
+    overflow-y: scroll;
   }
   .registerContainer > * {
+    position: relative;
+    top: 100px;
     justify-content: space-evenly;
   }
 }
