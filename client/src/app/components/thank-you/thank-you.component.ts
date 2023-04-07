@@ -16,7 +16,7 @@ export class ThankYouComponent implements OnInit {
   //download txt file with receipt
   public downloadTxtReceipt() {
     this.dyanmicDownload({
-      fileName: 'My Report',
+      fileName: 'SuperExpensive-Receipt',
       text: this.receiptData(),
     });
   }
@@ -58,7 +58,7 @@ export class ThankYouComponent implements OnInit {
     Products:  ${productsArray}\r\n
     Total price:  ${this.cartService.total}₪\r\n
     Thank you for shopping with us, We hope we never see you again :)\r\n
-    --------------------------mySupermarket--------------------------;`;
+    --------------------------Super Expensive--------------------------;`;
   }
 
   ngOnInit(): void {
