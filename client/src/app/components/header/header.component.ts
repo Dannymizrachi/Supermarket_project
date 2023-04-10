@@ -212,7 +212,7 @@ export class HeaderComponent implements OnInit {
       if (typeof event === 'object' && event.body) {
         this.uniqueImgId = event.body.name;
         this.uploadedImageName =
-          'http://localhost:3000/uploads/' + event.body.name;
+          'http://localhost:80/uploads/' + event.body.name;
       }
     });
   }

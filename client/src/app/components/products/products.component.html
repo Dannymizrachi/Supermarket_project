@@ -55,7 +55,9 @@
     <br />
     <br />
     <div
-      *ngFor="let product of productService.products | categoryPipe: categoryID"
+      *ngFor="
+        let product of productService.products | categoryPipe : categoryID
+      "
       class="col-lg-2 col-md-3 mb-12 productCardDesign"
     >
       <div class="card h-100">
@@ -63,9 +65,15 @@
           ><img
             *ngIf="product.img_src != null"
             class="card-img-top imageSize"
-            src="http://localhost:3000/uploads/{{ product.img_src }}"
+            src="http://localhost:80/uploads/{{ product.img_src }}"
             alt=""
-        /></a>
+          />
+          <img
+            *ngIf="product.img_src === null"
+            src="http://localhost:80/uploads/no-image.webp"
+            alt=""
+          />
+        </a>
         <div class="card-body">
           <h4 class="card-title">
             <a class="productName">{{ product.product_name }}</a>

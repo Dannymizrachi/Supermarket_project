@@ -24,7 +24,12 @@
         <img
           *ngIf="product.img_src != null"
           class="card-img-top imageSize"
-          src="http://localhost:3000/uploads/{{ product.img_src }}"
+          src="http://localhost:80/uploads/{{ product.img_src }}"
+          alt=""
+        />
+        <img
+          *ngIf="product.img_src === null"
+          src="http://localhost:80/uploads/no-image.webp"
           alt=""
         />
 
