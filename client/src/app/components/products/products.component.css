@@ -32,8 +32,10 @@
 }
 
 .productName {
-  font-size: medium;
+  font-size: 1.5rem;
   cursor: default;
+  text-decoration: none;
+  color: inherit;
 }
 .categoryContainer {
   max-width: 100;
