@@ -116,12 +116,13 @@ export class AdminComponent implements OnInit {
 
   //open modal for edit product
   public openModalForEdit(item: Products) {
-    console.log(item);
+    console.log('item', item);
     this.productForEdit.product_id = item.product_id;
     this.productForEdit.product_name = item.product_name;
     this.productForEdit.unit_price = item.unit_price;
     this.productForEdit.category_name = item.category_name;
     this.productForEdit.description = item.description;
+    this.productForEdit.img_src = item.img_src;
 
     this.showModal = true;
 
@@ -153,8 +154,10 @@ export class AdminComponent implements OnInit {
       description: this.description,
     });
   }
+
   public closeModal() {
     this.showModal = false;
+    this.uploadedImageName = '';
   }
 
   public onDeleteProductClicked(product: Products) {
@@ -203,5 +206,15 @@ export class AdminComponent implements OnInit {
     );
 
     this.showModal = false;
+  }
+
+  public getEditImage(): string {
+    if (this.uploadedImageName) {
+      return this.uploadedImageName;
+    }
+    if (this.productForEdit.img_src) {
+      return 'http://localhost:80/uploads/' + this.productForEdit.img_src;
+    }
+    return 'http://localhost:80/uploads/no-image.webp';
   }
 }

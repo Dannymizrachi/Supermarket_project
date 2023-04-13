@@ -60,7 +60,7 @@
       "
       class="col-lg-2 col-md-3 mb-12 productCardDesign"
     >
-      <div class="card h-100">
+      <div class="cardHeightFix card h-100">
         <a
           ><img
             *ngIf="product.img_src != null"
@@ -70,6 +70,7 @@
           />
           <img
             *ngIf="product.img_src === null"
+            class="card-img-top imageSize"
             src="http://localhost:80/uploads/no-image.webp"
             alt=""
           />
@@ -80,19 +81,21 @@
           </h4>
           <h5>&#8362;{{ product.unit_price }}</h5>
           <p class="card-text">{{ product.description }}</p>
-          <input
-            type="button"
-            class="addToCart"
-            value="+"
-            (click)="addToCart(product)"
-          />
-          &nbsp;&nbsp;&nbsp;
-          <input
-            class="removeFromCart"
-            type="button"
-            value="-"
-            (click)="deleteItemFromCart(product)"
-          />
+          <div class="addRemoveCartContainer">
+            <input
+              type="button"
+              class="addToCart"
+              value="+"
+              (click)="addToCart(product)"
+            />
+            &nbsp;&nbsp;&nbsp;
+            <input
+              class="removeFromCart"
+              type="button"
+              value="-"
+              (click)="deleteItemFromCart(product)"
+            />
+          </div>
         </div>
       </div>
     </div>

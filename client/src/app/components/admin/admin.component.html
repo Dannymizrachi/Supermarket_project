@@ -126,11 +126,7 @@
         <div style="text-align: center; margin-top: 100px">
           <mat-card style="margin-top: 10px; width: 50%">
             <mat-card-content>
-              <img
-                *ngIf="imageExists"
-                class="imageSize"
-                [src]="this.uploadedImageName"
-              />
+              <img class="imageSize" [src]="getEditImage()" />
             </mat-card-content>
             <mat-card-actions>
               <button
