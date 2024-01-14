@@ -12,6 +12,7 @@ const filesController = require('./controllers/files-controller');
 const uploadsController = require('./controllers/uploads-controller');
 const errorHandler = require('./errors/error-handler');
 const server = express();
+const path = require('path');
 
 const loginFilter = require('./middlewares/login-filter');
 const bodyParser = require('body-parser');
@@ -28,6 +29,16 @@ if (!fs.existsSync('./uploads')) {
 
 server.use(cors());
 server.use(errorHandler);
+const buildPath = path.join(__dirname, '../client/dist/superMarketClient');
+server.use(express.static(buildPath));
+
+server.get('/home', (req, res) => {
+	res.sendFile(path.join(__dirname, '../client/dist/superMarketClient/index.html'), (err) => {
+		if (err) {
+			res.status(500).send(err);
+		}
+	});
+});
 server.use('/uploads', uploadsController);
 server.use('/file', filesController);
 server.use(loginFilter());

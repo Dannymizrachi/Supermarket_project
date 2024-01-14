@@ -7,6 +7,7 @@ async function getAllCities() {
 	let sql = 'SELECT id,city_name from shufersal.cities';
 	try {
 		let allCities = await connection.execute(sql);
+		console.log(allCities);
 		return allCities;
 	} catch (error) {
 		throw new ServerError(ErrorType.GENERAL_ERROR, sql, error);

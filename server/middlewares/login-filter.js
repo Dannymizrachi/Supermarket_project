@@ -10,6 +10,7 @@ function authenticateJwtRequestToken() {
 		path: [
 			// public routes that don't require authentication
 			'/users/login',
+			'/home',
 			'/users/register',
 			'/users/forgotPassword',
 			'/cities',
